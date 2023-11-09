@@ -22,7 +22,6 @@ export class OrderListPipe implements PipeTransform {
         }
         return 1
       });
-      console.log('que devuelvo?', (sort === 'asc') ? tmpList : tmpList.reverse())
       return (sort === 'asc') ? tmpList : tmpList.reverse()
     }
   }

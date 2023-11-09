@@ -14,7 +14,6 @@ export class SectionGenericComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('generic tracks', this.dataTracks);
 
   }
 
