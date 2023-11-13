@@ -8,7 +8,7 @@ export const isLoggedGuard: CanActivateFn = (route, state) => {
   try {
     const token: boolean = cookieService.check('token');
     if (token) {
-      router.navigate([router.url])
+      router.navigate(['/', 'tracks'])
     }
     return true;
   } catch (error) {

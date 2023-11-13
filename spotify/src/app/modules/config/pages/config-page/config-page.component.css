@@ -28,7 +28,7 @@
 }
 
 .form-container {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     display: flex;
 }
 
@@ -39,7 +39,7 @@
 .buttons-container {
     display: flex;
     gap: 1rem;
-    margin: 1rem 0 0 2rem;
+    margin: 0 0 0 2rem;
 }
 
 /* sweet alert */

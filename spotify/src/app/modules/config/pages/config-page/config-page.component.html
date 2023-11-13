@@ -8,9 +8,9 @@
             <div class="container-items">
                 <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
                 <div class="item-name">{{track.name}}</div>
-                <!-- <div class="item-name">{{track.album}}</div>
-                <div class="item-name"><a href="{{track.cover}}">cover</a></div>
-                <div class="item-name">{{track.artist}}</div> -->
+                 <!-- <div class="item-name">{{track.album}}</div>
+                <div class="item-name"><a href="{{track.cover}}">cover</a></div> -->
+                <div class="item-name">{{track.artist}}</div> 
                 <div (click)="deleteTrack(track)"><i class="uil uil-trash-alt" style="color: red; cursor: pointer;"></i>
                 </div>
                 <div (click)="editTrack(track)"><i class="uil uil-edit"
@@ -23,7 +23,7 @@
         <button (click)="openForm()" class="btn btn-primary"> <i class="uil uil-plus"></i> Nueva canción</button>
     </div>
 
-    <form *ngIf="formOpened" [formGroup]="formTrack" (ngSubmit)="onSubmit()">
+    <form *ngIf="formOpened" [formGroup]="formTrack" (ngSubmit)="onSubmit()" #formView>
         <div class="form-container">
             <div class="input-track">
                 <mat-form-field class="example-full-width">
@@ -61,11 +61,11 @@
 
         <div class="buttons-container">
             <div>
-                <button class="btn btn-primary"> Guardar</button>
+                <button class="btn btn-primary">Guardar</button>
             </div>
 
             <div>
-                <button (click)="closeForm()" class="btn btn-danger"> Cancelar</button>
+                <button (click)="closeForm()" class="btn btn-danger">Cancelar</button>
             </div>
         </div>
     </form>

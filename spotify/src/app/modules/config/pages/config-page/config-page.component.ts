@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TrackModel } from '@core/models/tracks.model';
 import { ConfigService } from '@modules/config/services/config.service';
@@ -20,6 +20,7 @@ export class ConfigPageComponent implements OnInit {
   formTrack!: FormGroup
   formOpened: boolean = false
   trackId: string | number = ''
+  @ViewChild('formView', { static: false }) formView!: ElementRef;
 
   constructor(private trackService: TrackService, private searchService: SearchService, private fb: FormBuilder, private configService: ConfigService) {
     this.searchSubject.pipe(
@@ -61,6 +62,14 @@ export class ConfigPageComponent implements OnInit {
     this.formOpened = true
     this.trackId = ''
     this.formTrack.reset()
+    console.log('vieww', this.formView);
+    setTimeout(() => {
+      this.formView.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        offsetTop: 200
+      });
+    }, 500);
   }
 
   closeForm() {
