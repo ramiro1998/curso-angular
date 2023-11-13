@@ -1,0 +1,73 @@
+<div class="main-container">
+
+    <input matInput class="input-search" (ngModelChange)="searchTracks($event)" [(ngModel)]="stringFilter" type="text"
+        placeholder="Buscar canción">
+
+    <ul>
+        <li *ngFor="let track of tracks; let i = index" class="list-item">
+            <div class="container-items">
+                <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
+                <div class="item-name">{{track.name}}</div>
+                <!-- <div class="item-name">{{track.album}}</div>
+                <div class="item-name"><a href="{{track.cover}}">cover</a></div>
+                <div class="item-name">{{track.artist}}</div> -->
+                <div (click)="deleteTrack(track)"><i class="uil uil-trash-alt" style="color: red; cursor: pointer;"></i>
+                </div>
+                <div (click)="editTrack(track)"><i class="uil uil-edit"
+                        style="color: rgb(46, 46, 197); cursor: pointer;"></i></div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="button-new" *ngIf="!formOpened">
+        <button (click)="openForm()" class="btn btn-primary"> <i class="uil uil-plus"></i> Nueva canción</button>
+    </div>
+
+    <form *ngIf="formOpened" [formGroup]="formTrack" (ngSubmit)="onSubmit()">
+        <div class="form-container">
+            <div class="input-track">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="" formControlName="name">
+                    <mat-error>{{getErrorMessage(formTrack.get('name'))}}</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="input-track">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Álbum</mat-label>
+                    <input matInput placeholder="" formControlName="album">
+                    <mat-error>{{getErrorMessage(formTrack.get('album'))}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="input-track">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Cover</mat-label>
+                    <input matInput placeholder="" formControlName="cover">
+                    <mat-error>{{getErrorMessage(formTrack.get('cover'))}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="input-track">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Artista</mat-label>
+                    <input matInput placeholder="" formControlName="artist">
+                    <mat-error>{{getErrorMessage(formTrack.get('artist'))}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <div>
+                <button class="btn btn-primary"> Guardar</button>
+            </div>
+
+            <div>
+                <button (click)="closeForm()" class="btn btn-danger"> Cancelar</button>
+            </div>
+        </div>
+    </form>
+
+</div>

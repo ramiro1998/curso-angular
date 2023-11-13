@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class FavoritesPageComponent implements OnInit {
 
   ngOnInit(): void {
-    console.log('entrando favorites')
   }
 
 }

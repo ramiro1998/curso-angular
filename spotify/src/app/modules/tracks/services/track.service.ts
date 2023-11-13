@@ -21,7 +21,7 @@ export class TrackService {
 
   private skipById(listTracks: TrackModel[], id: number): Promise<TrackModel[]> {
     return new Promise((resolve, reject) => {
-      const listTmp = listTracks.filter(a => a._id !== id)
+      const listTmp = listTracks.filter(a => a.uid !== id)
       resolve(listTmp)
     })
   }
@@ -48,7 +48,6 @@ export class TrackService {
   getAllRandom$(): Observable<any> {
     return this.http.get(`${this.URL}/tracks`)
       .pipe(
-        // tap((data) => console.log('datinha', data)),
         mergeMap(({ data }: any) => this.skipById(data, 2)),
         // map((dataRevertida) => { //TODO aplicar un filter comun de array
         //   return dataRevertida.filter((track: TrackModel) => track._id !== 1)

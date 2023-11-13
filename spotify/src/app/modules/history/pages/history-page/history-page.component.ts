@@ -9,16 +9,21 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./history-page.component.css']
 })
 export class HistoryPageComponent implements OnInit {
-  listResults$: Observable<any> = of([])
+  listResults$: TrackModel[] = []
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
   }
 
   receiveData(event: string): void {
-    console.log('entrandooo')
     //TODO: agarras el termino y sabes que solo se ejecuta cunado tiene 3 caracters
-    this.listResults$ = this.searchService.searchTracks$(event)
+    this.searchService.searchTracks$(event).subscribe((tracks: TrackModel[]) => {
+      const uniqueTracks = tracks.filter((track, index, self) =>
+        index === self.findIndex(t => t.uid === track.uid)
+      );
+      this.listResults$ = uniqueTracks;
+    })
 
+    /* tuve que hacerlo así porque el endpoint search trae repetidos */
   }
 }

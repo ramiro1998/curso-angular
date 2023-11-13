@@ -23,7 +23,6 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.listObservers$.forEach(u => u.unsubscribe())
-    console.log('🔴🔴🔴🔴🔴🔴🔴 BOOM!');
   }
 
 

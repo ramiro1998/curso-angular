@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@modules/auth/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-side-bar',
@@ -11,12 +13,15 @@ export class SideBarComponent implements OnInit {
   mainMenu: {
     defaultOptions: Array<any>, accessLink: Array<any>
   } = { defaultOptions: [], accessLink: [] }
+  user: any
 
   customOptions: Array<any> = []
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService, private cookie: CookieService) { }
 
   ngOnInit(): void {
+
+    this.user = JSON.parse(this.cookie.get('user'))
     this.mainMenu.defaultOptions = [
       {
         name: 'Home',
@@ -32,7 +37,12 @@ export class SideBarComponent implements OnInit {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
         router: ['/', 'favorites'],
-        query: { hola: 'mundo' }
+        // query: { hola: 'mundo' }
+      },
+      {
+        name: 'Configuración',
+        icon: 'uil uil-setting',
+        router: ['/', 'config'],
       }
     ]
 
@@ -44,12 +54,17 @@ export class SideBarComponent implements OnInit {
       {
         name: 'Canciones que te gustan',
         icon: 'uil-heart-medical'
+      },
+      {
+        name: 'Cerrar Sesión',
+        icon: 'uil uil-signout',
+        action: () => this.logout()  // <-- Add a callback function to execute on click
       }
-    ]
+    ];
 
     this.customOptions = [
       {
-        name: 'Mi lista º1' ,
+        name: 'Mi lista º1',
         router: ['/']
       },
       {
@@ -66,6 +81,10 @@ export class SideBarComponent implements OnInit {
       }
     ]
 
+  }
+
+  logout(): void {
+    this.authService.logout()
   }
 
   goTo($event: any): void {

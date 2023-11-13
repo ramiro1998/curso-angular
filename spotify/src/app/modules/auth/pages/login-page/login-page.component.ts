@@ -19,11 +19,11 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.formLogin = new UntypedFormGroup(
       {
-        email: new UntypedFormControl('', [
+        email: new UntypedFormControl('ramiro@mail.com', [
           Validators.required,
           Validators.email
         ]),
-        password: new UntypedFormControl('',
+        password: new UntypedFormControl('12345678',
           [
             Validators.required,
             Validators.minLength(6),
@@ -31,8 +31,8 @@ export class LoginPageComponent implements OnInit {
           ])
       }
     )
-    this.formLogin.get('email')?.valueChanges.subscribe((mail) => { console.log('cambbiando maill', mail); this.errorSession = false });
-    this.formLogin.get('password')?.valueChanges.subscribe((pass) => { console.log('cambbiando contraseña', pass); this.errorSession = false });
+    this.formLogin.get('email')?.valueChanges.subscribe((mail) => { this.errorSession = false });
+    this.formLogin.get('password')?.valueChanges.subscribe((pass) => { this.errorSession = false });
   }
 
   // sendLogin(): void {
@@ -57,11 +57,12 @@ export class LoginPageComponent implements OnInit {
     this.authService.sendCredentials(email, password)
       .subscribe(
         responseOk => {
-          console.log('ok?', responseOk)
           if (responseOk.tokenSession) {
             const { tokenSession, data } = responseOk;
             this.cookie.set('token', tokenSession, 4, '/');
+            this.cookie.set('user', JSON.stringify(data), 4, '/');
             this.router.navigate(['/', 'tracks']);  // <-- navigate on success}
+        
           } else {
             this.errorSession = true;
           }

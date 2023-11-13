@@ -44,7 +44,6 @@ export const sessionGuardFunctional = (): boolean => {
 
   try {
     const token: boolean = cookieService.check('token');
-    console.log('token guard', token)
     if (!token) {
       router.navigate(['/', 'auth'])
     }

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/purple-green.css';
 
 :root {
     --color-1: #1DB954;
@@ -36,4 +36,40 @@ button {
 
 button:disabled {
     opacity: .5;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.sweet-popup {
+    width: 15rem !important;
+}
+
+.swal2-title {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.swal2-icon {
+    font-size: 12px !important;
+}
+
+.swal2-html-container {
+    margin-top: 0.5rem !important;
+}
+
+.swal2-actions {
+    margin-top: 0.5rem !important;
 }
