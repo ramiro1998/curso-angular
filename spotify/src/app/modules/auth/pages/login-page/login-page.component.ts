@@ -59,10 +59,10 @@ export class LoginPageComponent implements OnInit {
         responseOk => {
           if (responseOk.tokenSession) {
             const { tokenSession, data } = responseOk;
-            this.cookie.set('token', tokenSession, 4, '/');
-            this.cookie.set('user', JSON.stringify(data), 4, '/');
+            this.cookie.set('token', tokenSession, { expires: 4, path: '/', sameSite: 'Strict' });
+            this.cookie.set('user', JSON.stringify(data), { expires: 4, path: '/', sameSite: 'Strict' });
             this.router.navigate(['/', 'tracks']);  // <-- navigate on success}
-        
+
           } else {
             this.errorSession = true;
           }

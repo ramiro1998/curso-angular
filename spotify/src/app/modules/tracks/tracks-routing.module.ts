@@ -5,6 +5,9 @@ import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 const routes: Routes = [
   {
     path: '', component: TracksPageComponent
+  },
+  {
+    path: '**', redirectTo: ''
   }
 ];
 

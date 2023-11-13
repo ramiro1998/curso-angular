@@ -23,6 +23,9 @@ const routes: Routes = [
         path: 'config',
         loadChildren: () => import('@modules/config/config.module').then(m => m.ConfigModule),
         canActivate: [adminRoleGuard]
+      },
+      {
+        path: '**', redirectTo: 'tracks'
       }
     ]
   }
