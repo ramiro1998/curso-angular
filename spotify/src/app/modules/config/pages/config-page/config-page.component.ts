@@ -62,7 +62,6 @@ export class ConfigPageComponent implements OnInit {
     this.formOpened = true
     this.trackId = ''
     this.formTrack.reset()
-    console.log('vieww', this.formView);
     setTimeout(() => {
       this.formView.nativeElement.scrollIntoView({
         behavior: 'smooth',

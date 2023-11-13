@@ -8,9 +8,9 @@
             <div class="container-items">
                 <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
                 <div class="item-name">{{track.name}}</div>
-                 <!-- <div class="item-name">{{track.album}}</div>
+                <!-- <div class="item-name">{{track.album}}</div>
                 <div class="item-name"><a href="{{track.cover}}">cover</a></div> -->
-                <div class="item-name">{{track.artist}}</div> 
+                <div class="item-name">{{track.artist}}</div>
                 <div (click)="deleteTrack(track)"><i class="uil uil-trash-alt" style="color: red; cursor: pointer;"></i>
                 </div>
                 <div (click)="editTrack(track)"><i class="uil uil-edit"
@@ -65,7 +65,7 @@
             </div>
 
             <div>
-                <button (click)="closeForm()" class="btn btn-danger">Cancelar</button>
+                <button type="button" (click)="closeForm()" class="btn btn-danger">Cancelar</button>
             </div>
         </div>
     </form>
