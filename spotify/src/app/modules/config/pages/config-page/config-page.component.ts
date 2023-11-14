@@ -26,7 +26,12 @@ export class ConfigPageComponent implements OnInit {
     this.searchSubject.pipe(
       debounceTime(500)
     ).subscribe((debouncedTerm: string) => {
-      this.searchService.searchTracks$(debouncedTerm).subscribe((tracks: TrackModel[]) => this.tracks = tracks)
+      this.searchService.searchTracks$(debouncedTerm).subscribe((tracks: TrackModel[]) => {
+        const uniqueTracks = tracks.filter((track, index, self) =>
+          index === self.findIndex(t => t.uid === track.uid)
+        );
+        this.tracks = uniqueTracks;
+      })
     });
   }
 
