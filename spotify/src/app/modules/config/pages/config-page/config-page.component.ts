@@ -73,7 +73,7 @@ export class ConfigPageComponent implements OnInit {
         block: 'start',
         offsetTop: 200
       });
-    }, 500);
+    }, 300);
   }
 
   closeForm() {
@@ -89,6 +89,13 @@ export class ConfigPageComponent implements OnInit {
       artist: track.artist
     });
     this.trackId = track.uid
+    setTimeout(() => {
+      this.formView.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        offsetTop: 200
+      });
+    }, 300);
   }
 
   deleteTrack(track: TrackModel) {

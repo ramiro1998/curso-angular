@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImgBrokenDirective } from '@shared/directives/img-broken.directive';
 
 
 @NgModule({
   declarations: [
-    ConfigPageComponent
+    ConfigPageComponent,
+    ImgBrokenDirective
   ],
   imports: [
     CommonModule,

@@ -6,7 +6,8 @@
     <ul>
         <li *ngFor="let track of tracks; let i = index" class="list-item">
             <div class="container-items">
-                <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
+                <!-- <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name"> -->
+                <img appImgBroken [customImg]="'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png'" [src]="track.cover" alt="" class="cover">
                 <div class="item-name">{{track.name}}</div>
                 <!-- <div class="item-name">{{track.album}}</div>
                 <div class="item-name"><a href="{{track.cover}}">cover</a></div> -->
